@@ -4,7 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +18,56 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^25.0.0"
+    "electron": "^25.0.0",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "productName": "ChatGPT",
+    "appId": "com.pc.electron",
+    "directories": {
+      "output": "releases"
+    },
+    "win": {
+      "icon": "builder/icon.ico",
+      "target": [
+        {
+          "target": "default",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 0,
+          "y": 0,
+          "path": "/Application"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "./build/icon.png",
+      "target": [ 
+          "dmg",
+          "zip" 
+      ]
+  },
+    "linux": {
+      "icon": "builder/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./builder/icon.ico",
+      "uninstallerIcon": "./builder/icon.ico",
+      "installerHeaderIcon": "./builder/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "electron-builder-start",
+      "include": "builder/installer.nsh"
+    }
   }
 }
