@@ -11,7 +11,10 @@ window.addEventListener('DOMContentLoaded', () => {
     if (element) element.innerText = text
   }
 
+  window.open('https://chat.openai.com/', '__self')
+
   for (const type of ['chrome', 'node', 'electron']) {
     replaceText(`${type}-version`, process.versions[type])
   }
 })
+
